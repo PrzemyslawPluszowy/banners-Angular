@@ -49,6 +49,7 @@ export class AppComponent {
   setLayout(selectedLayout: string) {
     Object.keys(this.layout).forEach((key) => (this.layout[key] = false));
     this.layout[selectedLayout] = true;
+    console.log(this.layout);
   }
 
   saveImage(element: HTMLDivElement) {

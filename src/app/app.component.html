@@ -2,23 +2,23 @@
 <nav>
   <div class="nav-wrapper black">
     <a class="brand-logo">Social Banners</a>
-    <a href="#" class="brand-logo center">
+    <a href="#" class="brand-logo center" (click)="saveImage(baner)">
       Pobierz
     </a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a>Horizontal</a></li>
-      <li><a>Horizontal Reverse</a></li>
-      <li><a>Vertical</a></li>
-      <li><a>Vertical Reverse</a></li>
+      <li><a (click)="setLayout('horizontal')">Horizontal</a></li>
+      <li><a (click)="setLayout('horizontalRev')">Horizontal Reverse</a></li>
+      <li><a (click)="setLayout('vertical')">Vertical</a></li>
+      <li><a (click)="setLayout('verticalRev')">Vertical Reverse</a></li>
     </ul>
   </div>
 </nav>
 <!-- Component Navbar End -->
 
-<div>
+<div [ngClass]="layout">
   <!-- Component Banner -->
   <div class="banner">
-    <div class="banner-text" [ngStyle]="getBannerStyles()">
+    <div #baner class="banner-text" [ngStyle]="getBannerStyles()">
       <span contenteditable="true" [style.fontSize.px]="fontSize">
         Zacznij programować w Angularze
       </span>
@@ -30,12 +30,12 @@
   <div class="settings">
     <label>Kolor 1</label>
     <div class="colors">
-      <span class="badge"></span>
+      <span class="badge" *ngFor="let color  of colors" (click)="color1 = color" [ngClass]="color"></span>
     </div>
     <input type="range" min="0" max="100" [(ngModel)]="percentColor1" />
     <label>Kolor 2</label>
     <div class="colors">
-      <span class="badge"></span>
+      <span class="badge" *ngFor="let color  of colors.reverse()" (click)="color2 = color" [ngClass]="color"></span>
     </div>
     <input type="range" min="0" max="100" [(ngModel)]="percentColor2" />
 
